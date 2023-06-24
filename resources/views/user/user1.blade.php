@@ -41,7 +41,7 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="user1">Home</a>
+                        <a class="nav-link" href="redirect">Home</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="about">About</a>
@@ -127,7 +127,7 @@
                                  <h5 class="tasty_text">Tasty Of DozeCafe</h5>
                                  <p class="banner_text">more-or-less normal distribution of letters, as opposed to using </p>
                                  <div class="btn_main">
-                                    <div class="about_bt"><a href="#">About Us</a></div>
+                                    <div class="about_bt"><a href="about">About Us</a></div>
                                     <div class="callnow_bt active"><a href="#">Call Now</a></div>
                                  </div>
                               </div>
@@ -389,8 +389,10 @@
             <div class="about_section_2 layout_padding">
                <div class="image_iman"><img src="images/about-img.png" class="about_img"></div>
                <div class="about_taital_box">
-                  <h1 class="about_taital_1">Coffee distribution '</h1>
-                  <p class=" about_text">has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editorhas a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editor</p>
+                  <h1 class="about_taital_1">Coffee  '</h1>
+                  <p class=" about_text">A cup of Nespresso is made of brewed coffee and is instead made by forcing high-pressured hot water through very finely ground coffee beans. This is then topped with a crema, a brown foam, that adds the rich, full-flavoured aftertaste that will surely awake your energy. 
+
+That's why so many people adore it because coffee can be either an energizing shot or a cozy cuddle, depending on the circumstance. Every cup may make you feel better, and it's a beverage that's simple to enjoy. Additionally, there is a cup for every type of individual due to the enormous range of coffee brews, blends, and flavors.</p>
                   <div class="readmore_btn"><a href="#">Read More</a></div>
                </div>
             </div>
@@ -511,17 +513,17 @@
             <div class="row">
                <div class="col-md-12">
                   <h1 class="address_text">Address</h1>
-                  <p class="footer_text">here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use </p>
+                  <p class="footer_text">F.R HIDALGO STREET QUIAPO MANILA</p>
                   <div class="location_text">
                      <ul>
                         <li>
                            <a href="#">
-                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+01 1234567890</span>
+                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+63975123533</span>
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">demo@gmail.com</span>
+                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">DozeCafe@gmail.com</span>
                            </a>
                         </li>
                      </ul>
@@ -540,7 +542,7 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-6 col-sm-12">
-                  <p class="copyright_text">2020 All Rights Reserved. Design by <a href="https://html.design">Free Html Templates</a></p>
+                  <p class="copyright_text">2023 All Rights Reserved. DozeCafe</p>
                </div>
                <div class="col-lg-6 col-sm-12">
                   <div class="footer_social_icon">

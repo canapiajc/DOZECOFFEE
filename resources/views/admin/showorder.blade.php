@@ -84,9 +84,9 @@
                     data-parent="#accordionSidebar ">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item active " href="adminshoworder">ORDERS</a>
+                        <a class="collapse-item active  " href="adminshoworder">ORDERS</a>
                         <a class="collapse-item " href="adminshowship">TO SHIP</a>
-                        <a class="collapse-item" href="adminshoworder">TO RECEIVE</a>
+                        <a class="collapse-item " href="adminshowreceive">TO RECEIVE</a>
                         <a class="collapse-item" href="adminshoworder">HISTORY</a>
                     </div>
                 </div>
@@ -319,44 +319,12 @@
                             </div>
                         </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
+                   
 
                 </nav>
                 <!-- End of Topbar -->
 
+              
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -371,9 +339,9 @@
                     </div>
                 @endif
                     
-                    <table class="table table-dark">
-                    <thead>
-  
+                <table class="table">
+                    
+                    <thead class="thead-light">
                         <tr >
                         <th scope="col">Name</th>
                         <th scope="col">Phone #</th>
@@ -389,11 +357,34 @@
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
+
         
                     @foreach($order as $orders)
+                 
+           
+           
                     <tbody>
         
                     <tr>
+                    <!-- <form action="{{url('Shippeds')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+           
+                    <td><input type="text"name="name" value="{{$orders->name}}" >{{$orders->name}}</td>
+                    <td><input type="text" name="phone" value="{{$orders->phone}}">{{$orders->phone}}</td>
+                    <td><input type="text" name="address" value="{{$orders->address}}">{{$orders->address}}</td>
+                    <td><input type="text" name="baranggay" value="{{$orders->baranggay}}">{{$orders->baranggay}}</td>
+                    <td><input type="text" name="zip" value="{{$orders->zip}}">{{$orders->zip}}</td>
+                    <td><input type="text" name="productname" value="{{$orders->product_name}}">{{$orders->product_name}}</td>
+                    <td><input type="text" name="quantity" value="{{$orders->quantity}}">{{$orders->quantity}}</td>
+                    <td><input type="text" name="price" value="{{$orders->price}}">{{$orders->price}}</td>
+                    <td><input type="text" name="total" value="{{$orders->Total}}">{{$orders->Total}}</td>
+                    <td><input type="text" name="status" value="{{$orders->status}}">{{$orders->status}}</td>
+                    <td><a type="button" class="btn btn-success" href="{{url('Shippeds')}}">insert</a></td>
+                    <td><a type="button" class="btn btn-success" href="{{url('updatedelivered', $orders->id)}}">SHIP</a></td>
+                    <td><a type="button" class="btn btn-success" href="{{url('invoice', $orders->id)}}">Generate</a></td>
+                    <td><a type="button" class="btn btn-danger" Onclick="return ConfirmDelete();" href="{{url('deleteorder',$orders->id)}}">REMOVE</a></td>
+                    </form> -->
+
                     <form action="{{url('updatedelivered', $orders->id)}}" method="post">
                     <td> <input type="text" name="name[]" value="{{$orders->name}}" hidden>{{$orders->name}}</td>
                     <td><input type="text" name="phone[]" value="{{$orders->phone}}"hidden>{{$orders->phone}}</td>
@@ -405,7 +396,7 @@
                     <td><input type="text" name="price" value="{{$orders->price}}"hidden>{{$orders->price}}</td>
                     <td><input type="text" name="total" value="{{$orders->Total}}"hidden>{{$orders->Total}}</td>
                     <td><input type="text" name="status" value="{{$orders->status}}"hidden>{{$orders->status}}</td>
-                    
+              
                     <td><a type="button" class="btn btn-success" href="{{url('updatedelivered', $orders->id)}}">SHIP</a></td>
                     <td><a type="button" class="btn btn-success" href="{{url('invoice', $orders->id)}}">Generate</a></td>
                     <td><a type="button" class="btn btn-danger" Onclick="return ConfirmDelete();" href="{{url('deleteorder',$orders->id)}}">REMOVE</a></td>
@@ -414,7 +405,7 @@
                     <tbody>
 
                     @endforeach
-                    @csrf
+            
 
                 <!-- /.container-fluid -->
 

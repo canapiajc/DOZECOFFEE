@@ -111,7 +111,7 @@
       @foreach($data as $product)
 				<div class="col-md-3 mt-3">
                <div class="card">
-						<img src="/productimage/{{$product->image}}" alt="Product Image"> 
+						<img height="50px" width="500 px" src="/productimage/{{$product->image}}" alt="Product Image"> 
                   <div class="card-body">
                      <h2>  {{ $product->title}} </h2>
                      <h4>  Price: {{ $product->price}} </h4>

@@ -67,8 +67,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item " href="buttons">ADD PRODUCTS</a>
-                        <a class="collapse-item " href="cards">All Products</a>
+                        <a class="collapse-item " href="addproduct">ADD PRODUCTS</a>
+                        <a class="collapse-item " href="admin.cards">All Products</a>
                     </div>
                 </div>
             </li>

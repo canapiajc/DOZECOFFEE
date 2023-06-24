@@ -8,6 +8,9 @@ use App\Models\order;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\toshipped;
+use App\Models\toship;
+
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -114,9 +117,10 @@ class HomeController extends Controller
         $user=auth()->user();
         $order=order::where('phone',$user->phone)->get();
         $count=cart::where('phone', $user->phone)->count();
+        $countss=toshipped::where('phone', $user->phone)->count();
         $counts=order::where('phone', $user->phone)->count();
         
-        return view('user.orderuser', compact('count','order','counts'));
+        return view('user.orderuser', compact('count','order','counts','countss'));
 
         // $user=auth()->user();
         // $order=order::where('phone',$user->phone)->get();
@@ -161,11 +165,26 @@ class HomeController extends Controller
         {
           
            
-                $order=new order;
+                $order=new order ;
+               
                 $order->product_name=$request->productname[$key];
                 $order->price=$request->price[$key];
                 $order->quantity=$request->quantity[$key];
-                $order->Total=$request->total[$key]; 
+                $order->total=$request->total[$key]; 
+                $order->baranggay=$request->brgy[$key];
+                $order->zip=$request->zip[$key];
+                $order->name=$name;
+                $order->phone=$phone;
+                $order->address=$address;
+              
+                $order->status='Pending...';
+                $order->save();
+                $order=new toship ;
+               
+                $order->product_name=$request->productname[$key];
+                $order->price=$request->price[$key];
+                $order->quantity=$request->quantity[$key];
+                $order->total=$request->total[$key]; 
                 $order->baranggay=$request->brgy[$key];
                 $order->zip=$request->zip[$key];
                 $order->name=$name;
@@ -175,10 +194,26 @@ class HomeController extends Controller
                 $order->status='Pending...';
                 $order->save();
            
+                $order=new toshipped ;
+               
+                $order->product_name=$request->productname[$key];
+                $order->price=$request->price[$key];
+                $order->quantity=$request->quantity[$key];
+                $order->total=$request->total[$key]; 
+                $order->baranggay=$request->brgy[$key];
+                $order->zip=$request->zip[$key];
+                $order->name=$name;
+                $order->phone=$phone;
+                $order->address=$address;
+              
+                $order->status='Pending...';
+                $order->save();
+           
+           
 
         }
         DB::table('carts')->where('phone',$phone)->delete();
-        Alert::success('Thankyou for your Order!');
+        Alert::success('Thankyou for your ORDER!');
 
         return redirect()->back()->with('message','Check Out Successfuly!');
          
@@ -188,8 +223,9 @@ class HomeController extends Controller
         $user=auth()->user();
         $name=$user->name;
         $phone=$user->phone;
+        Alert::success('PRODUCT REMOVED!','This is removed form your Cart');
     DB::table('carts')->where('phone',$phone)->delete();
-    return redirect()->back()->with('message','Check Out Successfuly!');
+    return redirect()->back()->with('message','CANCEL Successfuly!');
     }
    
     public function userito()
@@ -199,7 +235,26 @@ class HomeController extends Controller
     }
    
  
+    public function ship(Request $request)
+    {
+        $data = new toships;
    
+        $data->name=$request->name;
+        
+        $data->phone=$request->phone;
+        
+        $data->address=$request->address;
+        
+        $data->product_name=$request->productname;
+        $data->quantity=$request->quantity;
+        $data->total=$request->total;
+        $data->price=$request->price;
+        $data->status=$request->status;
+        $data->baranggay=$request->baranggay;
+        $data->zip=$request->zip;
+        $data->save();
+        return redirect()->back()->with('message','Product Submit Successfuly!');
+    }
     
     public function poropor()
     {
@@ -239,21 +294,40 @@ class HomeController extends Controller
     }
     public function about()
     {
-        return view('user.about');
+        $data = product::all();
+        $user=auth()->user();
+        $count=cart::where('phone', $user->phone)->count();
+        $counts=order::where('phone', $user->phone)->count();
+         return view('user.about',compact('data','count','counts'));
+       // return view('user.about');
     }
     public function coffees()
     {
         $data = product::all();
-        return view('user.coffees',compact('data'));
+        $user=auth()->user();
+        $count=cart::where('phone', $user->phone)->count();
+        $counts=order::where('phone', $user->phone)->count();
+         return view('user.coffees',compact('data','count','counts'));
        // return view('user.coffees');
     }
     public function blog()
     {
-        return view('user.blog');
+        
+        $data = product::all();
+        $user=auth()->user();
+        $count=cart::where('phone', $user->phone)->count();
+        $counts=order::where('phone', $user->phone)->count();
+         return view('user.blog',compact('data','count','counts'));
+       // return view('user.blog');
     }
     public function contact()
     {
-        return view('user.contact');
+        $data = product::all();
+        $user=auth()->user();
+        $count=cart::where('phone', $user->phone)->count();
+        $counts=order::where('phone', $user->phone)->count();
+         return view('user.contact',compact('data','count','counts'));
+       // return view('user.contact');
     }
     public function shop()
     {

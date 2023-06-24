@@ -57,18 +57,48 @@
                         <a class="nav-link" href="contact">Contact</a>
                      </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                     <div class="login_bt">
-                        <ul>
-                           <li><a href="#"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login</a></li>
-                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </form>
-               </div>
+                  <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+               <a class="nav-link" href="{{url('showcart')}}">
+                        <i class='fa fa-shopping-cart'>CART[{{$count}}]</i>
+                   
+                     </li>
+                     <a class="nav-link" href="{{url('myorder')}}">
+                      
+                      <i class='fa fa-shopping-bag'>MyOrder[{{$counts}}]</i>
+                      </a>
+                     
+                        <!-- Authentication Links -->
+                      
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                     
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
             </nav>
          </div>
-      </div>
+      </div>  
+      @if(Session::has('message'))
+                   
+                  
+                   {{Session::get('message')}}
+          
+            
+               @endif
+      @include('sweetalert::alert')
       <!-- header section end -->
       <!-- contact section start -->
       <div class="contact_section layout_padding">
@@ -112,17 +142,17 @@
             <div class="row">
                <div class="col-md-12">
                   <h1 class="address_text">Address</h1>
-                  <p class="footer_text">here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use </p>
+                  <p class="footer_text">968 F.R HIDALGO STREET QUIAPO MANILA </p>
                   <div class="location_text">
                      <ul>
                         <li>
                            <a href="#">
-                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+01 1234567890</span>
+                           <i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_10">+639751932158</span>
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">demo@gmail.com</span>
+                           <i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_10">DozeCafe@gmail.com</span>
                            </a>
                         </li>
                      </ul>
@@ -142,7 +172,7 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-6 col-sm-12">
-                  <p class="copyright_text">2020 All Rights Reserved. Design by <a href="https://html.design">Free Html Templates</a></p>
+                  <p class="copyright_text">2023 All Rights Reserved. DozeCafe </p>
                </div>
                <div class="col-lg-6 col-sm-12">
                   <div class="footer_social_icon">
@@ -171,6 +201,22 @@
       <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js"></script>
 
       
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+	  <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{ asset('assets/js/jquery-3.7.0.min.js')}}"></script>
+
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="js/jquery.min.js"></script>
       <script src=" https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>

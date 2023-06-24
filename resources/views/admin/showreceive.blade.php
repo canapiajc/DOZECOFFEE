@@ -85,8 +85,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item " href="adminshoworder">ORDERS</a>
-                        <a class="collapse-item active" href="adminshowship">TO SHIP</a>
-                        <a class="collapse-item" href="adminshowreceive">TO RECEIVE</a>
+                        <a class="collapse-item " href="adminshowship">TO SHIP</a>
+                        <a class="collapse-item active" href="adminshoworder">TO RECEIVE</a>
                         <a class="collapse-item" href="adminshoworder">HISTORY</a>
                     </div>
                 </div>
@@ -327,7 +327,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Show SHIP(s)</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Show RECEIVE(s)</h1>
                     @if(Session::has('message'))
                    
                     <div class="alert alert-success">
@@ -336,9 +336,10 @@
            
                     </div>
                 @endif
+                    
                 <table class="table">
                     
-                <thead class="thead-light">
+                    <thead class="thead-light">
   
                         <tr >
                         <th scope="col">Name</th>
@@ -360,7 +361,7 @@
                     <tbody>
         
                     <tr>
-                    <form action="{{url('updatereceived', $orders->id)}}" method="post">
+                    <form action="{{url('updateredeliver', $orders->id)}}" method="post">
                     <td> <input type="text" name="name" value="{{$orders->name}}" hidden>{{$orders->name}}</td>
                     <td><input type="text" name="phone" value="{{$orders->phone}}"hidden>{{$orders->phone}}</td>
                     <td><input type="text" name="address" value="{{$orders->address}}"hidden>{{$orders->address}}</td>
@@ -371,7 +372,7 @@
                     <td><input type="text" name="price" value="{{$orders->price}}"hidden>{{$orders->price}}</td>
                     <td><input type="text" name="total" value="{{$orders->Total}}"hidden>{{$orders->total}}</td>
                     <td><input type="text" name="status" value="{{$orders->status}}"hidden>{{$orders->status}}</td>
-                    <td><a type="button" class="btn btn-success" href="{{url('updatereceived', $orders->id)}}">RECEIVED</a></td>
+                    <td><a type="button" class="btn btn-success" href="{{url('updateredeliver', $orders->id)}}">RECEIVED</a></td>
                     <td><a type="button" class="btn btn-danger" Onclick="return ConfirmDelete();" href="{{url('deleteorder',$orders->id)}}">REMOVE</a></td>
                     </form>
                     </tr>

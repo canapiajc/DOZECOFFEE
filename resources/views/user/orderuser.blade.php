@@ -129,12 +129,14 @@
 
                     <tbody>
                     <tr>
+                    
                     <td>{{$orders->product_name}}</td>
                     <td>{{$orders->quantity}}</td>
                     <td>{{$orders->price}}</td>
-                    <td>{{$orders->Total}}</td>
+                    <td>{{$orders->total}}</td>
                     <td>{{$orders->status}}</td>
                     <td>{{$orders->created_at}}</td>
+                
                     </tr>
                     @php $total +=  (int)$orders->quantity * (int)$orders->price ; @endphp
                     <tbody>
@@ -149,12 +151,12 @@
   </thead>
   <div class="card-footer">
 
-  <p style="text-align:center" >
-    <a  class="fas fa-ship" href="http//www.google.com">TO SHIP[{{$count}}]</a> 
+  <!-- <p style="text-align:center" >
+    <a  class="fas fa-ship" href="http//www.google.com">TO SHIP[{{$countss}}]</a> 
     <a class="fas fa-heart" href="Contact Us">TO RECEIVE[{{$counts}}]</a>
     <a class="fas fa-bookmark" href="Contact Us">HISTORY[{{$counts}}]</a>
     
-</p>
+</p> -->
  
  <script>
  

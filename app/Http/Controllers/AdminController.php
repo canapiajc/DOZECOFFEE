@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\order;
 use App\Models\User;
 use App\Models\toship;
+use App\Models\toshipped;
 use Kreait\Firebase\Contract\Database;
 
 
@@ -32,7 +33,7 @@ class AdminController extends Controller
 
 
         $data->title=$request->title;
-        
+    
         $data->price=$request->price;
         
         $data->description=$request->desc;
@@ -41,6 +42,22 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message','Product Submit Successfuly!');
 
+        
+    }
+    public function shipped(Request $req)
+    {
+        // request()->validate([
+        //     'name' => ['required'],
+        //     // add rules for other fields
+        // ]);
+        $order = order::find($id);
+   //     $order = toship::find($id);
+        $order->status='Delivered';
+        $order->save();
+        return redirect()->back();
+       
+       
+   
     }
     public function showproduct()
     {
@@ -99,8 +116,15 @@ class AdminController extends Controller
         return view('admin.showship',compact('order'));
    
     }
+    public function adminshowreceive()
+    {
+        
+        $order=order::all();
+        return view('admin.showreceive',compact('order'));
+   
+    }
 
-    public function updatedelivered(Request $request, $id)
+    public function updatedelivered($id)
     {
         // $validated = $request->validate([
         //     'productname' => 'required',
@@ -110,8 +134,10 @@ class AdminController extends Controller
         // ]);
         //$input = $request->all();
         $order = order::find($id);
-        $order->status='shipped';
+     //   $order = toshipped::find($id);
+        $order->status='Shipped';
         $order->save();
+        return redirect()->back();
         // $user=auth()->user();
         // $name=$user->name;
         // $phone=$user->phone;
@@ -154,13 +180,22 @@ class AdminController extends Controller
         
         // $order=order::find($id);
         // $order->delete();
-       return redirect()->back()->with('message', 'shipped'); 
+       //return redirect()->back()->with('message', 'shipped'); 
     }
 
     public function updatereceived($id)
     {
         $order = order::find($id);
-        $order->status='Delivered';
+      //  $order = toshipped::find($id);
+        $order->status='Received';
+        $order->save();
+        return redirect()->back();
+    }
+    public function updateredeliver($id)
+    {
+        $order = order::find($id);
+      //  $order = toshipped::find($id);
+        $order->status='DELIVERED';
         $order->save();
         return redirect()->back();
     }
@@ -182,5 +217,6 @@ class AdminController extends Controller
       
        return redirect()->back();
     }
+  
    
 }

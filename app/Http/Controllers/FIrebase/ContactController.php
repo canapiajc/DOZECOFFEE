@@ -8,6 +8,7 @@ use Kreait\Firebase\Contract\Database;
 use App\Models\Product;
 use App\Models\order;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ContactController extends Controller
@@ -17,6 +18,12 @@ class ContactController extends Controller
         $this->database = $database;
         $this->tablename ='message'; 
     }
+    public function adminshowcontact()
+    {
+       $contacts = $this->database->getReference($this->tablename)->getValue();
+      
+       return view('admin.contact', compact('contacts'));
+    } 
     public function insertmessage(Request $request)
     {
         // $order = order::find($id);
@@ -33,9 +40,10 @@ class ContactController extends Controller
         ];
         $postRef= $this->database->getReference($this->tablename)->push($postData);
         if($postRef){
-            return redirect()->back()->with('message','TANGINAMO!');
+            Alert::success('Message Sent Successfuly!!');
+            return redirect()->back()->with('message','Message Sent Successfuly!!');
         }else{
-            return redirect()->back()->with('message','mali gago!!'); 
+            return redirect()->back()->with('message','Something Wrong'); 
         }
        // return view('user.contact');
         // $order=order::find($id);

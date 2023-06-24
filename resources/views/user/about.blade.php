@@ -38,7 +38,7 @@
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
+                     <li class="nav-item ">
                         <a class="nav-link" href="redirect">Home</a>
                      </li>
                      <li class="nav-item active">
@@ -56,20 +56,59 @@
                      <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                      </li>
+                
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                     <div class="login_bt">
-                        <ul>
+                  <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+               <a class="nav-link" href="{{url('showcart')}}">
+                        <i class='fa fa-shopping-cart'>CART[{{$count}}]</i>
+                    
+                        </a>
+                     </li>
+                     <a class="nav-link" href="{{url('myorder')}}">
+                      
+                        <i class='fa fa-shopping-bag'>MyOrder[{{$counts}}]</i>
+                        </a>
+                     </li>
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
                        
-                           <li><a href="#"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login</a></li>
-                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </form>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                      
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">          PROFILE  </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                     
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                </div>
             </nav>
          </div>
-      </div>
       <!-- header section end -->
       <!-- about section start -->
       <div class="about_section layout_padding">
@@ -83,8 +122,12 @@
             <div class="about_section_2 layout_padding">
                <div class="image_iman"><img src="images/about-img.png" class="about_img"></div>
                <div class="about_taital_box">
-                  <h1 class="about_taital_1">Coffee distribution '</h1>
-                  <p class=" about_text">has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editorhas a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editor</p>
+                  <h1 class="about_taital_1">
+“It doesn’t matter where you’re from – or how you feel… There’s always peace in a strong cup of coffee.”- Nespresso </h1>
+                  <p class=" about_text">Our cafe is always willing to serve you a  cup full of enjoyment, relaxation and awakening coffee. A cup of Nespresso is made of brewed coffee and is instead made by forcing high-pressured hot water through very finely ground coffee beans. This is then topped with a crema, a brown foam, that adds the rich, full-flavoured aftertaste that will surely awake your energy. 
+
+That's why so many people adore it because coffee can be either an energizing shot or a cozy cuddle, depending on the circumstance. Every cup may make you feel better, and it's a beverage that's simple to enjoy. Additionally, there is a cup for every type of individual due to the enormous range of coffee brews, blends, and flavors.
+</p>
                   <div class="readmore_btn"><a href="#">Read More</a></div>
                </div>
             </div>
@@ -141,6 +184,7 @@
             </div>
          </div>
       </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <!-- copyright section end -->
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
@@ -151,5 +195,8 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+	  <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{ asset('assets/js/jquery-3.7.0.min.js')}}"></script>
    </body>
 </html>

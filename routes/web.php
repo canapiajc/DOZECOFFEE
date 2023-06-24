@@ -43,22 +43,28 @@ route:: get('/admin.cards',[AdminController::class,'showproduct']);
 route:: get('/deleteproduct/{id}',[AdminController::class,'deleteproduct']);
 route:: get('/showcart',[HomeController::class,'showcart']);
 route:: get('/delete/{id}',[HomeController::class,'deletecart']);
-route:: post('/updatedelivered/{id}',[AdminController::class,'updatedelivered']);
+//updatedeliver
+route:: get('/updatedelivered/{id}',[AdminController::class,'updatedelivered']);
+//route:: any('/Shippeds',[AdminController::class,'shipped']);
+route:: post('/clickship/{id}',[AdminController::class,'shipped']);
 route:: get('/adminaccount',[AdminController::class,'adminaccount']);
 route:: get('/useraccount',[AdminController::class,'useraccount']);
 route:: get('/deleteorder/{id}',[AdminController::class,'deleteorder']);
 route:: get('/invoice/{id}',[PdfgenerateController::class,'invoice']);
 
 route:: post('/message',[ContactController::class,'insertmessage']);
-
+route:: get('/adminshowcontact',[ContactController::class,'adminshowcontact']);
 route:: get('/adminshoworder',[AdminController::class,'adminshoworder']);
 route:: get('/adminshowship',[AdminController::class,'adminshowship']);
+route:: get('/adminshowreceive',[AdminController::class,'adminshowreceive']);
 route:: get('/updatereceived/{id}',[AdminController::class,'updatereceived']);
+route:: get('/updateredeliver/{id}',[AdminController::class,'updateredeliver']);
+
 
 //route:: get('/user.home',[HomeController::class,'home']);
 route:: get('/redirect',[HomeController::class,'redirect']);
 route:: get('/user1',[HomeController::class,'userito']);
-route:: get('/buttons',[HomeController::class,'buttons']);
+route:: get('/addproduct',[HomeController::class,'buttons']);
 route:: get('/about',[HomeController::class,'about']);
 route:: get('/coffees',[HomeController::class,'coffees']);
 route:: get('/blog',[HomeController::class,'blog']);

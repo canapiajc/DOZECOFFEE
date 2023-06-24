@@ -57,18 +57,57 @@
                         <a class="nav-link" href="contact">Contact</a>
                      </li>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                     <div class="login_bt">
-                        <ul>
-                           <li><a href="#"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Login</a></li>
-                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </form>
+                  <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+               <a class="nav-link" href="{{url('showcart')}}">
+                        <i class='fa fa-shopping-cart'>CART[{{$count}}]</i>
+                    
+                        </a>
+                     </li>
+                     <a class="nav-link" href="{{url('myorder')}}">
+                      
+                        <i class='fa fa-shopping-bag'>MyOrder[{{$counts}}]</i>
+                        </a>
+                     </li>
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                       
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                      
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item">          PROFILE  </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                     
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                </div>
             </nav>
          </div>
-      </div>
       <!-- header section end -->
       <!-- blog section start -->
       <div class="blog_section layout_padding">
@@ -156,6 +195,9 @@
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- copyright section end -->
+      <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
@@ -164,5 +206,8 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+	  <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{ asset('assets/js/jquery-3.7.0.min.js')}}"></script>
    </body>
 </html>
